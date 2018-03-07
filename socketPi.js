@@ -2,7 +2,7 @@ var app = require('express')(); //Express Library
 var server = require('http').Server(app); //Create HTTP instance
 var io = require('socket.io')(server); //Socket.IO Library
  
-var tempSensor = hoi; //temperature sensor connected to analog pin 0
+var tempSensor = 'hoi'; //temperature sensor connected to analog pin 0
 
 app.get('/', function(req, res) {                  
     res.sendfile(__dirname + '/index.html'); //serve the static html file
