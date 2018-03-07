@@ -1,4 +1,3 @@
-io = require('socket.io');
 // Create SocketIO instance, connect
 var socket = new io.Socket('192.168.1.103',{
 	port: 3001
