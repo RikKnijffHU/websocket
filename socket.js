@@ -5,7 +5,7 @@ ws.on('open', function open() {
 	var interval = setInterval(function() {
 	var p1 = 'This is a message from the pi!  ' + new Date().getTime();
   ws.send(p1);
-},5000);
+},1000);
 });
 
 ws.on('message', function incoming(data) {
