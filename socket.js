@@ -8,4 +8,8 @@ ws.on('open', function open() {
 },5000);
 });
 
+ws.on('message', function incoming(data) {
+  console.log(data);
+});
+
 
