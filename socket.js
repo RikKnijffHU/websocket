@@ -3,7 +3,7 @@ const ws = new WebSocket('ws://192.168.0.111:3001/Inventory');
  console.log('start');
 ws.on('open', function open() {
 	var interval = setInterval(function() {
-	var p1 = Math.floor(Math.random() * Math.floor(max))
+	var p1 = Math.floor(Math.random() * Math.floor(10))
   ws.send(p1);
 },1000);
 });
