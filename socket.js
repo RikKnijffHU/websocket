@@ -3,7 +3,7 @@ const ws = new WebSocket('ws://192.168.1.103:3001/Inventory');
  console.log('start');
 ws.on('open', function open() {
 	var interval = setInterval(function() {
-	var p1 = 'This is a message from the pi!  ' + new Date().getTime();
+	var p1 = Math.floor(Math.random() * Math.floor(max))
   ws.send(p1);
 },1000);
 });
