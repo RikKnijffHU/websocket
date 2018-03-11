@@ -77,7 +77,7 @@ bleno.on('advertisingStart', function(error) {
                         onWriteRequest : function(data, offset, withoutResponse, callback) {
                             this.value = data;
                             console.log('Write request: value = ' + this.value.toString("utf-8"));
-				 ws.send(data);
+				 ws.send(this.value.toString("utf-8"));
                             callback(this.RESULT_SUCCESS);
                         }
  
