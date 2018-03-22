@@ -1,5 +1,5 @@
 var amqp = require('amqplib/callback_api');
-
+console.log('voor');
 amqp.connect('amqp://172.16.3.169', function(err, conn) {
   console.log(conn);
   console.log(err);
