@@ -1,17 +1,15 @@
-var amqp = require('amqplib/callback_api');
-console.log('voor');
-amqp.connect('amqp://172.16.3.169', function(err, conn) {
-  console.log(conn);
-  console.log(err);
-  conn.createChannel(function(err, ch) {
-    var ex = 'InventoryBus';
-    var key = 'Inventory.RasberryService.VoorraadVeranderdEvent'
-    var msg = {ArtikelNummer:1, NieuweVoorraad: 52};
+var amqp = require('amqplib');
+var key =  'Inventory.RasberryService.VoorraadVeranderdEvent';
+var message = {ArtikelNummer:1, NieuweVoorraad: 52};
 
-    ch.assertExchange(ex, 'topic', {durable: false});
-    ch.publish(ex, key, new Buffer(msg));
-    console.log(" [x] Sent %s:'%s'", key, msg);
-  });
-  console.log("na");
-  setTimeout(function() { conn.close(); process.exit(0) }, 500);
-});
+amqp.connect('amqp://172.16.3.169').then(function(conn) {
+  return conn.createChannel().then(function(ch) {
+    var ex = 'InventoryBus';
+    var ok = ch.assertExchange(ex, 'topic', {durable: false});
+    return ok.then(function() {
+      ch.publish(ex, key, Buffer.from(message));
+      console.log(" [x] Sent %s:'%s'", key, message);
+      return ch.close();
+    });
+  }).finally(function() { conn.close(); })
+}).catch(console.log);
