@@ -5,7 +5,6 @@ amqp.connect('amqp://172.16.3.169', function(err, conn) {
   console.log(err);
   conn.createChannel(function(err, ch) {
     var ex = 'InventoryBus';
-    var args = process.argv.slice(2);
     var key = 'Inventory.RasberryService.VoorraadVeranderdEvent'
     var msg = {ArtikelNummer:1, NieuweVoorraad: 52};
 
