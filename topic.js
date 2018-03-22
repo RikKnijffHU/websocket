@@ -1,6 +1,6 @@
 var amqp = require('amqplib');
 var key =  'Inventory.RasberryService.VoorraadVeranderdEvent';
-var message = {ArtikelNummer:1, NieuweVoorraad: 52};
+var message = '{ArtikelNummer:1, NieuweVoorraad: 52}';
 
 amqp.connect('amqp://172.16.3.169').then(function(conn) {
   return conn.createChannel().then(function(ch) {
