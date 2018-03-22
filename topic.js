@@ -1,6 +1,6 @@
 var amqp = require('amqplib/callback_api');
 
-amqp.connect('amqp://192.168.0.111', function(err, conn) {
+amqp.connect('amqp://172.16.3.169', function(err, conn) {
   conn.createChannel(function(err, ch) {
     var ex = 'InventoryBus';
     var args = process.argv.slice(2);
